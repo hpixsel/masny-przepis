@@ -1,6 +1,7 @@
 ---
+id: b3990749-e4da-4349-8978-4aad5a4cb864
 title: "Płatki"
-date: 17.06.2022 10:54:59
+date: 17-06-2022
 img: "https://images.unsplash.com/photo-1670087792707-c85cd056bdfe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
 ingredients: [
   "3 cup all purpose flour",
@@ -11,6 +12,7 @@ ingredients: [
   "1 cup milk",
   "2 teaspoon vanilla essence",
 ]
+description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corporis harum architecto facilis culpa suscipit officia amet provident, ipsam beatae dolor aliquam eius nihil!"
 ---
 
 # Welcome to my blog

@@ -1,7 +1,7 @@
 ---
-id: f6bfdcc0-53fa-4c01-a1da-eef2da61f420
+id: 70149e34-1c46-4d3b-97d4-ad802a87e7df
 title: "Naleśniki"
-date: 13-06-2022
+date: 13-02-2022
 img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=960&q=80"
 ingredients: [
   "3 cup all purpose flour",
@@ -12,7 +12,7 @@ ingredients: [
   "1 cup milk",
   "2 teaspoon vanilla essence",
 ]
-description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corporis harum architecto facilis culpa suscipit officia amet provident, ipsam beatae dolor aliquam eius nihil! Asperiores vero corrupti veritatis saepe alias eius iure dolorem quam, blanditiis error hic, nostrum temporibus perferendis? Veritatis officiis voluptas rem nemo atque delectus impedit tempore quos?"
+description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corporis harum architecto facilis culpa suscipit officia amet provident, ipsam beatae dolor aliquam eius nihil! Asperiores vero corrupti veritatis saepe alias eius iure dolorem quam, blanditiis error hic, nostrum temporibus perferendis?"
 ---
 
 # Welcome to my blog

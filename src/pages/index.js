@@ -1,37 +1,44 @@
-import ReactMarkdown from "react-markdown"
 import Layout from "@/components/Layout"
-import { getPostBySlug, getAllPosts } from '@/lib/files.js'
+import { getAllPosts } from '@/lib/files.js'
 import Image from "next/image"
 import Link from "next/link"
+import { faMortarPestle } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function Home({posts}) {
-  console.log(posts)
   const random = Math.floor(Math.random() * posts.length)
+  const slicedPosts = posts.slice(0, 3)
+
   return (
     <Layout>
-      <Link href={posts[random].slug} className="relative z-0">
-        <p className="text-5xl font-semibold drop-shadow-2xl bg-neutral-800/40 px-3 py-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4">{posts[random].frontmatter.title}</p>
+      <Link href={"przepisy/" + posts[random].slug} className="relative z-0">
+        <p className="text-5xl font-semibold bg-neutral-800/40 px-3 py-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 rounded-sm">{posts[random].frontmatter.title}</p>
         <Image src={posts[random].frontmatter.img} className="w-full -mt-14 object-cover max-h-72 md:max-h-96" width={1920} height={1080} alt="home picture" />
       </Link>
       <div className="container">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit consequatur cupiditate reprehenderit vero atque vitae obcaecati quas excepturi, unde inventore perferendis consectetur molestias officiis id illum ab laboriosam nemo ipsum! Dicta quidem in nihil dignissimos? Perferendis, nesciunt fugit? Ipsam impedit tempore soluta, quisquam omnis laudantium eius excepturi sapiente nulla dolores corrupti quae iusto itaque fugiat voluptatem cum numquam quia eaque iste mollitia? Eligendi nobis quasi eum, omnis impedit accusamus nisi incidunt laudantium, officia sit quidem! Voluptas, ducimus tempora modi quam eos minima culpa at, impedit accusantium, odio nemo. Magni explicabo quos sequi aliquam quasi optio, quas mollitia aut? Architecto perferendis distinctio voluptate odit magni est necessitatibus, deserunt quo voluptatibus culpa obcaecati tempora repellendus adipisci quidem facilis repellat numquam explicabo maiores vitae unde beatae inventore quasi velit quisquam? Ipsum error ab magnam molestias libero hic vero? Sit eligendi nesciunt, excepturi cumque, magnam blanditiis qui accusamus illum earum debitis non quaerat est vel molestiae dolorem dicta officia necessitatibus possimus architecto voluptas atque! Voluptate ab vitae vero consectetur temporibus dolor praesentium saepe ex molestiae quod fugiat nesciunt quisquam in ratione aliquam fuga, odit aut culpa aliquid, dolore, rem recusandae repellat. Amet dicta velit expedita quam recusandae. Sint quis, voluptates odit dolores officiis consequatur, saepe voluptatem repellat, nihil laboriosam provident optio ab ipsum perferendis eaque porro earum. Amet, quidem dolorem. Ratione, at! Harum repudiandae vitae tempore veritatis, expedita id vero magnam modi. Vero nihil eveniet impedit veniam magnam error repellat ea eaque enim at eius ab qui voluptates facere illo, incidunt maiores? Labore nisi soluta sapiente unde facere! Illum possimus omnis ipsam facere laudantium aperiam dignissimos nam sint ullam vero error tempore veniam molestiae odio laborum non harum numquam eum eius suscipit dicta, ex nihil voluptatum? Distinctio animi molestiae reiciendis atque excepturi accusantium assumenda quibusdam aliquam ad, necessitatibus vitae consectetur ipsa, impedit dolorum, debitis voluptas? Dolores inventore deserunt quo cumque odio fuga obcaecati ipsa, praesentium iusto ea, a quisquam porro et necessitatibus voluptatibus placeat expedita qui. Minus recusandae cum soluta blanditiis, aliquam nobis nulla esse ratione officia. Corrupti blanditiis, iure repudiandae autem pariatur sapiente cum, est nihil veritatis, ratione voluptatum nobis ab facere accusantium nisi sed temporibus molestias voluptas voluptates magni illum consequuntur. Veritatis quos vitae, quasi numquam dolor modi iure debitis accusantium incidunt doloribus consequuntur, vero, aliquid ipsum similique est voluptatem tenetur laborum corrupti eveniet? Tempora similique voluptatem aspernatur saepe vitae in, voluptas explicabo totam nemo ut impedit, iure illum tenetur. Pariatur, quas doloribus saepe fugiat consectetur accusamus amet quasi, nobis odit repellendus non culpa architecto eius inventore totam ab? Assumenda delectus natus nostrum voluptatem, dignissimos aperiam ullam, architecto ea repudiandae voluptates corrupti rerum, officia laboriosam quam expedita. Reprehenderit, magni quas aliquam exercitationem, perferendis repellat et laborum assumenda minus excepturi labore possimus similique ea maxime, eaque reiciendis placeat impedit voluptates! Velit modi illo repellendus tempore ullam iusto, omnis magnam libero nobis commodi! Eius illo quasi quis nulla, quae inventore eum et nostrum voluptatibus enim asperiores id nam possimus vel tempore sit harum dolorum temporibus natus maiores officiis ut porro sed cum! Corporis, facere.
+        <h2 className="font-bold mt-6 text-center uppercase">Najnowsze przepisy</h2>
+        <div className="grid p-2 gap-6 md:grid-cols-2 md:px-0 md:py-4 md:gap-9 xl:grid-cols-3">
+          {slicedPosts.map(item => {
+            return (
+              <Link href={"przepisy/" + item.slug} key={item.slug}>
+                <div className="bg-neutral-800 rounded-md overflow-hidden">
+                  <div className="relative aspect-video">
+                    <Image className="object-cover" src={item.frontmatter.img} alt="" fill />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <h2 className="px-3 pt-2 font-bold">{item.frontmatter.title}</h2>
+                    <div className="bg-blue-600 rounded-2xl text-xs mr-3">
+                      <p className="px-3 py-1 font-normal text-white"><FontAwesomeIcon className="mr-2" icon={faMortarPestle} />{item.frontmatter.ingredients.length}</p>
+                    </div>
+                  </div>
+                  <p className="p-3 pt-0 font-normal text-neutral-400">{item.frontmatter.date}</p>
+                  <p className="card_desc mx-3 mt-0 mb-4">{item.frontmatter.description}</p>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
       </div>
-      
-      {/* {posts.map(item => {
-        return (
-          <div key={item.slug}>
-            <h2 className="text-xl">{item.frontmatter.title}</h2>
-            <p>{item.slug}</p>
-            <p>{item.frontmatter.date}</p>
-            <ul>
-              {item.frontmatter.ingredients.map(ingredient => (<li key={ingredient}>{ingredient}</li>))}
-            </ul>
-            <ReactMarkdown>
-              {item.content}
-            </ReactMarkdown>
-          </div>
-        )
-      })} */}
     </Layout>
   )
 }
