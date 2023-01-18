@@ -10,7 +10,7 @@ export default function Navbar() {
         <Link href="/" className='text-xl font-semibold'><FontAwesomeIcon icon={faCakeCandles} className="mr-1" /> Masny Przepis</Link>
         <div className="flex gap-3 text-md">
           <Link href="/przepisy" className='text-neutral-300 hover:text-white'>Przepisy</Link>
-          <Link href="#!" className='text-neutral-300 hover:text-white flex gap-2 items-center'>Dodaj
+          <Link href="/admin" className='text-neutral-300 hover:text-white flex gap-2 items-center'>Dodaj
             <FontAwesomeIcon icon={faPlus} className="bg-neutral-700 p-1 rounded" />
           </Link>
         </div>

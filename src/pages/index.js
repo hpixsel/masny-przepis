@@ -4,13 +4,16 @@ import Image from "next/image"
 import Link from "next/link"
 import { faMortarPestle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import HeadComponent from "@/components/Head"
 
 export default function Home({posts}) {
   const random = Math.floor(Math.random() * posts.length)
-  const slicedPosts = posts.slice(0, 3)
+  const reversedPosts = posts.reverse()
+  const slicedPosts = reversedPosts.slice(0, 3)
 
   return (
     <Layout>
+      <HeadComponent title="Masny Przepis" desc="Interesuje cię jakiś masny przepis?" />
       <Link href={"przepisy/" + posts[random].slug} className="relative z-0">
         <p className="text-5xl font-semibold bg-neutral-800/40 px-3 py-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 rounded-sm">{posts[random].frontmatter.title}</p>
         <Image src={posts[random].frontmatter.img} className="w-full -mt-14 object-cover max-h-72 md:max-h-96" width={1920} height={1080} alt="home picture" />

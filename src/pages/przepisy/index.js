@@ -1,3 +1,4 @@
+import HeadComponent from '@/components/Head'
 import Layout from '@/components/Layout'
 import { getAllPosts } from '@/lib/files'
 import { faMortarPestle } from '@fortawesome/free-solid-svg-icons'
@@ -6,11 +7,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function index({posts}) {
+  const reversedPosts = posts.reverse()
   return (
     <Layout>
+      <HeadComponent title="Wszystkie przepisy" desc="Wszystkie zapisane przepisy na stronie" />
       <div className="container">
         <div className="grid p-2 gap-6 md:grid-cols-2 md:px-0 md:py-6 md:gap-9 xl:grid-cols-3">
-          {posts.map(item => {
+          {reversedPosts.map(item => {
             return (
               <Link href={"przepisy/" + item.slug} key={item.slug}>
                 <div className="bg-white/5 rounded-sm overflow-hidden">
