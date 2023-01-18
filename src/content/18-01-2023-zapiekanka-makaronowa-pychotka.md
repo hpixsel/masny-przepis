@@ -1,7 +1,7 @@
 ---
 title: Zapiekanka makaronowa "PYCHOTKA"
 date: 18-01-2023
-img: /public/images/zapiekanka-makaronowa-pychotka.webp
+img: /images/zapiekanka-makaronowa-pychotka.webp
 description: Zapiekanka makaronowa "PYCHOTKA" z kurczakiem i serem.
 ingredients:
   - makaron świderki 100 gramów
