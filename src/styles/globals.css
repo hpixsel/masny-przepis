@@ -33,6 +33,10 @@
     list-style-position: inside;
   }
 
+  .card_width {
+    max-width: calc(100vw - 2.5rem);
+  }
+
   .card_desc {
     overflow: hidden;
    text-overflow: ellipsis;

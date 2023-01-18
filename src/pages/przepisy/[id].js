@@ -12,7 +12,7 @@ export default function index({data}) {
   return (
     <Layout>
       <HeadComponent title={data.frontmatter.title} desc={data.frontmatter.description} url={"www.masnyprzepis.netlify.app/przepisy/" + data.slug} img={data.frontmatter.img} />
-      <Image src={data.frontmatter.img} className="w-full -mt-14 object-cover max-h-72 md:max-h-96" width={1920} height={1080} alt="home picture" />
+      <Image src={data.frontmatter.img} className="w-full -mt-14 object-cover max-h-72 md:max-h-96 blur-sm" width={1920} height={1080} alt="home picture" />
       <div className='container'>
         <h2 className="font-bold">{data.frontmatter.title}</h2>
         <p className="text-neutral-400">{data.frontmatter.date}</p>
