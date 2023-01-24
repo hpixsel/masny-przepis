@@ -19,6 +19,7 @@ ingredients:
   - 6 łyżek cukru pudru
   - 2 łyżki żelatyny
   - 1/3 szklanki gorącej wody
+time: 120
 ---
 Wszystkie składniki na biszkopt powinny być w temp. pokojowej.\
 Mąkę przesiewamy do miseczki razem z mąką ziemniaczaną. Białka oddzielamy od żółtek i miksujemy razem ze szczyptą soli na sztywną pianę. Następnie powoli dodajemy cukier i miksujemy, aż masa będzie gęsta Zmniejszamy obroty miksera i dodajemy po jednym żółtku oraz olej. Za pomocą dużej łyżki np. drewnianej lub szpatułki w kilku niedużych porcjach dodaje suche składniki i delikatnie mieszamy. Tortownicę o śr. 24-26 cm wykładamy papierem do pieczenia lub używamy silikonowej. Wykładamy ciasto, wyrównujemy i pieczemy w temp. 170 C przez około 40-50 min. do tzw. suchego patyczka. Po upieczeniu gorący biszkopt w formie upuszczamy na zabezpieczony np. ręcznikiem blat z wysokości około 30 cm. W ten sposób biszkopt nie opadnie. Studzimy i przekrawamy na 3 części.\

@@ -19,3 +19,9 @@ collections:
         name: "ingredients"
         widget: "list"
         min: 1
+      - label: "Średni czas przygotowania"
+        name: "time"
+        widget: "number"
+        default: 0
+        value_type: "int"
+        min: 0

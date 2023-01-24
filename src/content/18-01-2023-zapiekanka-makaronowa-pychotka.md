@@ -15,6 +15,7 @@ ingredients:
   - mozarella light 20 dekagramów
   - olej 4 łyżki
   - woda 1 szklanka
+time: 20
 ---
 ### Krok 1
 
