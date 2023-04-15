@@ -7,7 +7,26 @@ import Image from 'next/image'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 export default function index({data}) {
-  const ingredients = data.frontmatter.ingredients.map(item => <li key={item}>{item}</li>)
+  console.log(data.frontmatter)
+  const ingredients = data.frontmatter.ingredients.map(item => {
+    console.log(item)
+
+    return (
+      <div className="mt-6" key={item.part.name}>
+        <div className="flex gap-3">
+          <h3 className='text-lg font-bold'>{item.part.name}</h3>
+          <p><FontAwesomeIcon icon={faMortarPestle} className="text-blue-600 mr-1" /> {item.part.partIngredients.length}</p>
+        </div>
+        <ul>
+          {item.part.partIngredients.map(ingredient => {
+            return (
+              <li key={ingredient}>{ingredient}</li>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  })
 
   return (
     <Layout>
@@ -17,10 +36,7 @@ export default function index({data}) {
         <h2 className="font-bold">{data.frontmatter.title}</h2>
         <p className="text-neutral-400">{data.frontmatter.date}</p>
         <p className="text-blue-300 mt-3"><FontAwesomeIcon icon={faClock} className="text-blue-600" /> {data.frontmatter.time} min</p>
-        <p className="pt-6 font-normal text-blue-300"><span className='text-white mr-1'>Składniki: </span><FontAwesomeIcon className="mr-2 text-blue-600" icon={faMortarPestle} />{data.frontmatter.ingredients.length}</p>
-        <ul className='ml-1 text-neutral-300'>
-          {ingredients}
-        </ul>
+        {ingredients}
         <hr className='mt-9 border-blue-600' />
         <ReactMarkdown className='mt-9'>
           {data.content}
@@ -49,7 +65,6 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const id = context?.params.id
   const post = getPostBySlug(id)
-
   return {
     props: {
       data: post
