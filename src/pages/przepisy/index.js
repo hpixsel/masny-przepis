@@ -35,6 +35,10 @@ export default function Przepisy({posts}) {
         </div>
         <div className="grid p-2 gap-6 md:grid-cols-2 md:px-0 md:py-6 md:gap-9 xl:grid-cols-3">
           {filteredPosts.map(item => {
+            const allIngredients = []
+            item.frontmatter.ingredients.map(item => {
+              return allIngredients.push(...item.part.partIngredients)
+            })
             return (
               <Link href={"przepisy/" + item.slug} className="card_width" key={item.slug}>
                 <div className="bg-white/5 rounded-sm overflow-hidden h-full">
@@ -44,7 +48,7 @@ export default function Przepisy({posts}) {
                   <div className="flex items-center justify-between">
                     <h2 className="px-3 py-2 font-bold truncate">{item.frontmatter.title}</h2>
                     <div className="my-2 bg-blue-600 rounded-2xl text-xs mr-3">
-                      <p className="px-3 py-1 font-normal text-white whitespace-nowrap flex items-center"><FontAwesomeIcon className="mr-2" icon={faMortarPestle} />{item.frontmatter.ingredients.length}</p>
+                      <p className="px-3 py-1 font-normal text-white whitespace-nowrap flex items-center"><FontAwesomeIcon className="mr-2" icon={faMortarPestle} />{allIngredients.length}</p>
                     </div>
                   </div>
                   <div className="flex justify-between">

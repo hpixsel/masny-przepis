@@ -7,10 +7,7 @@ import Image from 'next/image'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 export default function index({data}) {
-  console.log(data.frontmatter)
   const ingredients = data.frontmatter.ingredients.map(item => {
-    console.log(item)
-
     return (
       <div className="mt-6" key={item.part.name}>
         <div className="flex gap-3">
