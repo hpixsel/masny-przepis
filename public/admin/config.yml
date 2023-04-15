@@ -19,10 +19,13 @@ collections:
         name: "ingredients"
         widget: "list"
         min: 1
-        field: {label: Nazwa, name: part, widget: object, fields: {
-          - {label: Nazwa, name: name, widget: string}
-          - {label: Składniki, name: partIngredients, widget: list, min: 1, field: {label: Składnik, name: ingredient, widget: string}}
-        } }
+        fields: 
+          - label: "Nazwa"
+            name: "part"
+            widget: "object"
+            fields: 
+              - {label: "Nazwa", name: "name", widget: "string"}
+              - {label: "Składniki", name: "partIngredients", widget: "list", min: 1, field: {label: "Składnik", name: "ingredient", widget: "string"}}
       - label: "Średni czas przygotowania"
         name: "time"
         widget: "number"
