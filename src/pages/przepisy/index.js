@@ -1,6 +1,5 @@
 import HeadComponent from '@/components/Head'
 import Layout from '@/components/Layout'
-import { getAllPosts } from '@/lib/files'
 import { faClock, faMortarPestle, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'

@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout"
-import { getAllPosts } from '@/lib/files.js'
 import Image from "next/image"
 import Link from "next/link"
 import { faMortarPestle } from "@fortawesome/free-solid-svg-icons"
