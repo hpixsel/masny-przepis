@@ -3,21 +3,22 @@ import Layout from '@/components/Layout'
 import { getPostBySlug, getAllPosts } from '@/lib/files.js'
 import { faMortarPestle, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
 import Image from 'next/image'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 export default function index({data}) {
-  const ingredients = data.frontmatter.ingredients.map(item => {
+  const ingredients = data[0].attributes.ingredients.map(item => {
     return (
-      <div className="mt-6" key={item.part.name}>
+      <div className="mt-6" key={item.name}>
         <div className="flex gap-3">
-          <h3 className='text-lg font-bold'>{item.part.name}</h3>
-          <p><FontAwesomeIcon icon={faMortarPestle} className="text-blue-600 mr-1" /> {item.part.partIngredients.length}</p>
+          <h3 className='text-lg font-bold'>{item.name}</h3>
+          <p><FontAwesomeIcon icon={faMortarPestle} className="text-blue-600 mr-1" /> {item.ingredient.length}</p>
         </div>
         <ul>
-          {item.part.partIngredients.map(ingredient => {
+          {item.ingredient.map(ingredient => {
             return (
-              <li key={ingredient}>{ingredient}</li>
+              <li key={ingredient.ingredient}>{ingredient.ingredient}</li>
             )
           })}
         </ul>
@@ -27,16 +28,16 @@ export default function index({data}) {
 
   return (
     <Layout>
-      <HeadComponent title={data.frontmatter.title} desc={data.frontmatter.description} url={"www.masnyprzepis.netlify.app/przepisy/" + data.slug} img={data.frontmatter.img} />
-      <Image src={data.frontmatter.img} className="w-full -mt-14 object-cover max-h-72 md:max-h-96 blur-sm" width={1920} height={1080} alt="home picture" />
+      <HeadComponent title={data[0].attributes.title} desc={data[0].attributes.description} url={"www.masnyprzepis.netlify.app/przepisy/" + data[0].attributes.slug} img={data[0].attributes.img.data.attributes.url} />
+      <Image src={data[0].attributes.img.data.attributes.url} className="w-full -mt-14 object-cover max-h-72 md:max-h-96 blur-sm" width={1920} height={1080} alt="home picture" />
       <div className='container'>
-        <h2 className="font-bold">{data.frontmatter.title}</h2>
-        <p className="text-neutral-400">{data.frontmatter.date}</p>
-        <p className="text-blue-300 mt-3"><FontAwesomeIcon icon={faClock} className="text-blue-600" /> {data.frontmatter.time} min</p>
+        <h2 className="font-bold">{data[0].attributes.title}</h2>
+        <p className="text-neutral-400">{data[0].attributes.date}</p>
+        <p className="text-blue-300 mt-3"><FontAwesomeIcon icon={faClock} className="text-blue-600" /> {data[0].attributes.time} min</p>
         {ingredients}
         <hr className='mt-9 border-blue-600' />
         <ReactMarkdown className='mt-9'>
-          {data.content}
+          {data[0].attributes.body}
         </ReactMarkdown>
       </div>
     </Layout>
@@ -44,11 +45,16 @@ export default function index({data}) {
 }
 
 export async function getStaticPaths() {
-  const allPosts = getAllPosts()
-  const allPaths = allPosts.map(item => {
+  const posts = await axios.get('https://strapi-production-f5fc.up.railway.app/api/przepisy?populate[ingredients][populate]=*&populate[img]=*', {
+    headers: {
+      'Authorization': `bearer ${process.env.API}`
+    }
+  })
+
+  const allPaths = posts.data.data.map(item => {
     return {
       params: {
-        id: item.slug
+        id: item.attributes.slug
       }
     }
   })
@@ -61,7 +67,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const id = context?.params.id
-  const post = getPostBySlug(id)
+
+  const posts = await axios.get('https://strapi-production-f5fc.up.railway.app/api/przepisy?populate[ingredients][populate]=*&populate[img]=*', {
+    headers: {
+      'Authorization': `bearer ${process.env.API}`
+    }
+  })
+
+  const post = posts.data.data.filter(item => item.attributes.slug == id)
+
   return {
     props: {
       data: post
