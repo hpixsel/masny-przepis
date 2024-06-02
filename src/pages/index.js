@@ -27,6 +27,10 @@ export default function Home({posts}) {
         <h2 className="font-bold mt-6 text-center uppercase">Najnowsze przepisy</h2>
         <div className="grid p-2 gap-6 md:grid-cols-2 md:px-0 md:py-4 md:gap-9 xl:grid-cols-3">
           {slicedPosts.map(item => {
+            const allIngredients = []
+            item.frontmatter.ingredients.map(item => {
+              return allIngredients.push(...item.part.partIngredients)
+            })
             return (
               <Link href={"przepisy/" + item.slug} className="card_width" key={item.slug}>
                 <div className="bg-neutral-800 rounded-md overflow-hidden h-full">
@@ -36,7 +40,7 @@ export default function Home({posts}) {
                   <div className="flex items-center justify-between gap-1">
                     <h2 className="px-3 pt-2 font-bold truncate">{item.frontmatter.title}</h2>
                     <div className="bg-blue-600 rounded-2xl text-xs mr-3">
-                      <p className="px-3 py-1 font-normal text-white flex items-center"><FontAwesomeIcon className="mr-2" icon={faMortarPestle} />{item.frontmatter.ingredients.length}</p>
+                      <p className="px-3 py-1 font-normal text-white flex items-center"><FontAwesomeIcon className="mr-2" icon={faMortarPestle} />{allIngredients.length}</p>
                     </div>
                   </div>
                   <p className="p-3 pt-0 font-normal text-neutral-400">{item.frontmatter.date}</p>
