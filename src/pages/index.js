@@ -2,7 +2,7 @@ import Layout from "@/components/Layout"
 import { getAllPosts } from '@/lib/files.js'
 import Image from "next/image"
 import Link from "next/link"
-import { faMortarPestle } from "@fortawesome/free-solid-svg-icons"
+import { faClock, faMortarPestle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import HeadComponent from "@/components/Head"
 import { useEffect, useState } from "react"
@@ -43,7 +43,10 @@ export default function Home({posts}) {
                       <p className="px-3 py-1 font-normal text-white flex items-center"><FontAwesomeIcon className="mr-2" icon={faMortarPestle} />{allIngredients.length}</p>
                     </div>
                   </div>
-                  <p className="p-3 pt-0 font-normal text-neutral-400">{item.frontmatter.date}</p>
+                  <div className="flex justify-between">
+                    <p className="p-3 pt-0 font-normal text-neutral-400">{item.frontmatter.date}</p>
+                    {item.frontmatter.time > 0 && <p className="text-blue-300 mr-3"><FontAwesomeIcon icon={faClock} className="text-blue-600" /> {item.frontmatter.time} min</p>}
+                  </div>
                   <p className="card_desc mx-3 mt-0 mb-4">{item.frontmatter.description}</p>
                 </div>
               </Link>
@@ -57,11 +60,10 @@ export default function Home({posts}) {
 
 export async function getStaticProps() {
   const posts = getAllPosts()
-  const reversedPosts = posts.reverse()
 
   return {
     props: {
-      posts: reversedPosts
+      posts: posts
     }
   }
 }

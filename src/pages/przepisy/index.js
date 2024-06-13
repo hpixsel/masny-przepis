@@ -53,7 +53,7 @@ export default function Przepisy({posts}) {
                   </div>
                   <div className="flex justify-between">
                     <p className="p-3 pt-0 font-normal text-neutral-400">{item.frontmatter.date}</p>
-                    <p className="text-blue-300 mr-3"><FontAwesomeIcon icon={faClock} className="text-blue-600" /> {item.frontmatter.time} min</p>
+                    {item.frontmatter.time > 0 && <p className="text-blue-300 mr-3"><FontAwesomeIcon icon={faClock} className="text-blue-600" /> {item.frontmatter.time} min</p>}
                   </div>
                   <p className="card_desc mx-3 mt-0 mb-4">{item.frontmatter.description}</p>
                 </div>
@@ -68,11 +68,10 @@ export default function Przepisy({posts}) {
 
 export async function getStaticProps() {
   const allPosts = getAllPosts()
-  const reversedPosts = allPosts.reverse()
 
   return {
     props: {
-      posts: reversedPosts
+      posts: allPosts
     }
   }
 }
