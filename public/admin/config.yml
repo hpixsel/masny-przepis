@@ -9,6 +9,8 @@ collections:
     folder: "src/content" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{day}}-{{month}}-{{year}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+      encoding: "ascii"
+      clean_accents: true
     fields: # The fields for each document, usually in front matter
       - {label: "Nazwa potrawy", name: "title", widget: "string"}
       - {label: "Data opublikowania", name: "date", widget: "date", format: 'DD-MM-YYYY'}
