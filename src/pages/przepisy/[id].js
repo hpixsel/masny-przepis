@@ -32,10 +32,10 @@ export default function index({data}) {
       <div className='container'>
         <h2 className="font-bold">{data.frontmatter.title}</h2>
         <p className="text-neutral-400">{data.frontmatter.date}</p>
-        <p className="text-blue-300 mt-3"><FontAwesomeIcon icon={faClock} className="text-blue-600" /> {data.frontmatter.time} min</p>
+        {data.frontmatter.time > 0 && <p className="text-blue-300 mt-3"><FontAwesomeIcon icon={faClock} className="text-blue-600" /> {data.frontmatter.time} min</p>}
         {ingredients}
         <hr className='mt-9 border-blue-600' />
-        <ReactMarkdown className='mt-9'>
+        <ReactMarkdown className='mt-9 markdown'>
           {data.content}
         </ReactMarkdown>
       </div>
